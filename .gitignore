@@ -1,6 +1,8 @@
 Introduction.to.Algorithms.4th.Leiserson.Stein.Rivest.Cormen.pdf
 notes.txt
-*.out
+**/*.out
 .vscode
 Exercises_Solved/*
 !Exercises_Solved/Exercises_Solved.pdf
+!Exercises_Solved/Exercises_Solved.tex
+bin/*
