@@ -6,6 +6,7 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{algorithm}
 \usepackage[noend]{algpseudocode}
+\usepackage{enumitem}
 \graphicspath{{../Images/}}
 
 % Customization of the document
@@ -34,10 +35,10 @@
 
 \section{Chapter 1: Foundations}
 
-\subsection{The Role of Algorithms in Computing}
+\subsection{\LARGE The Role of Algorithms in Computing}
 I didn't make the exercise of this section because I didn't find them useful.
 
-\subsection{Getting Started}
+\subsection{\LARGE Getting Started}
 \setcounter{exercise}{0} % Start from 0 for the exercises in this section
 
 % Used to make a label for referencing later if it's necesary
@@ -275,7 +276,7 @@ As we mentiones before, replacing \textit{n = 2k}, we conclude that the inductio
 is correct \textbf{\(n \cdot \log_2 n\)}
 
 \refstepcounter{exercise}
-\textbf{Exercise 2.3-5)}:
+\textbf{Exercise 2.3-5)}:\\
 \begin{algorithm}
     \caption{INSERTION-SORT-RECURSIVE}\label{InsertionSortRecursiveID}
     \begin{algorithmic}[1]
@@ -297,7 +298,7 @@ is correct \textbf{\(n \cdot \log_2 n\)}
 
 \newpage
 \refstepcounter{exercise}
-\textbf{Exercise 2.3-6)}:
+\textbf{Exercise 2.3-6)}:\\
 \begin{algorithm}
     \caption{BINARY-SEARCH}\label{BinarySearchID}
     \begin{algorithmic}[1]
@@ -318,7 +319,7 @@ is correct \textbf{\(n \cdot \log_2 n\)}
 \end{algorithm}
 
 \refstepcounter{exercise}
-\textbf{Exercise 2.3-7)}:
+\textbf{Exercise 2.3-7)}:\\
 You can't use binary search because while you are sorting most part of the time, it won't
 be that value in the sorted array. Maybe you should make a variation of binary search to 
 find out in which direction has less difference betwen the number being search and then
@@ -349,6 +350,182 @@ n items to the right + n / 2 that cost to search all the. So it's  \(n \cdot \fr
         \EndFunction
     \end{algorithmic}
 \end{algorithm}
+
+\underline{\large{Problems of page 45}}\\
+\\
+\refstepcounter{exercise}
+\textbf{Exercise 2-1)}:\\
+\textbf{a)} The number of arrays to be sort are \(\frac{n}{k}\), where \textit{n} is the
+number of elements in the original array and \textit{k} the number of elements to be sorted on
+\textit{insertion sort}. Due to that, on the worst case it should be sorted \(\frac{n}{k}
+\cdot k^2 \quad \rightarrow n \cdot k = \Theta(n \cdot k)\).
+
+\textbf{b)} The recursion will be called until reach \(\frac{n}{k}\) elements on a subarray.
+Hence it won't be called recursively until \(\log_2 n\) (when only 1 element is left). 
+Due to that the number of recursions are delimited by \(\log_2 \frac{n}{k}\). Finally in the
+worst case when only is left the first 2 subarrays, it will take \textit{n} iterations to
+sort it. Due to that, we explain why it's true the expresion \(\Theta(n \cdot \log_2 \frac{n}{k})\).
+
+\textbf{c)}  
+\[
+\Theta\left(n \cdot k + n \cdot \log_2 \frac{n}{k}\right) = \Theta(n \cdot \log_2 n)
+\]
+\[
+\Theta(n \cdot k) = \Theta(n \cdot \log_2 n) \quad \rightarrow \quad k = \Theta(\log_2 n)
+\]
+\[
+\Theta\left(n \cdot \log_2 \frac{n}{k}\right) = \Theta(n \cdot \log_2 n) \quad 
+\text{//Substituting } k = \Theta(\log_2 n)
+\]
+\[
+\Theta\left(n \cdot \log_2 \frac{n}{\log_2 n}\right) = \Theta(n \cdot \log_2 n) - \Theta(n \cdot \log_2 \log_2 n)
+\quad \text{//Dominant term is  \(\Theta(n \cdot \log_2 n)\)}
+\]
+In conclusion, the biggest posible value which both variants of Merge Sort have the same result
+is for \(k = \Theta(\log_2 n)\).
+
+\textbf{d)}
+You should see in which value it's better use one algorithm or another to sort and combine
+the 2 algorithms. As we saw in the section c, this k value is calculated applying that formula.
+
+\refstepcounter{exercise}
+\textbf{Exercise 2-2)}:\\
+\textbf{a)} Do you need to prove that on each iteration, of the inner for 1 element is being
+moved and it remains on all iterations. In addition to that, you must prove that on the extern
+for loop it's being incremented by 1.
+
+\textbf{b) Initialization}: The loop starts taking the most right element on the array.
+So the invariant is that take 1 element at a time.
+
+\textbf{Maintenance}: Loop takes on each iteration an element, compare with the left hand
+elemnt and if it's smaller than the left hand element, swap both elements. The loop invariant
+remains as Initialization because on each iteration only 1 element is being checked with
+another one. After that check, on the next iteration is taken the next left element.
+
+\textbf{Termination}: When this for ends, there are a number of elements equals to \textit{i} 
+(extern for) that are sorted in the lowest positions of the array.
+
+\textbf{c)} As I said before, on each time that the inner for loop ends, 1 value is sorted.
+Hence when the extern for loop ends, all values will be sorted on the right position and it's
+proved the inequality.
+
+\textbf{d)} Both have the same worst-case running time (\(\Theta(n^2)\)). But Insertion
+Sort is usually better on the averegage cases because it does less swaps and usually spends
+\(\Theta(n)\) on sort an array. On the other hand, Bubble Sort always spend \(Theta(n^2)\)
+to sort the array. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 2-3)}:\\
+\textbf{a)} \(\Theta(n)\) because it has to take all values of the array \textit{A} and 
+add it to \(x \cdot p\).
+
+\textbf{b)}
+\begin{figure*}[h]
+    \includegraphics[scale=0.3]{Problem2_3_b}
+    \centering
+    \caption{Resolution extracted from \href{https://atekihcan.github.io/CLRS/02/P02-03/}
+    {https://atekihcan.github.io/CLRS/02/P02-03/} I was lazy of do that hehehe.}
+\end{figure*}
+
+\textbf{c)}
+For \underline{Maintenance}:
+\[
+y = a_i + x \sum_{k=0}^{n-(i+1)} a_{k+i+1} x^k
+\]
+
+\[
+= a_i x^0 + \sum_{k=0}^{n-i-1} a_{k+i+1} x^{k+1}
+\]
+
+\[
+= a_i x^0 + \sum_{k=1}^{n-i} a_{k+i} x^k
+\]
+
+\[
+= \sum_{k=0}^{n-i} a_{k+i} x^k.
+\]
+
+The loop \underline{terminates} at i = -1:
+
+\[
+= a_i x^0 + \sum_{k=0}^{n-i-1} a_{k+i+1} x^{k+1} = \sum_{k=0}^{n-i} a_{k+i} x^k.
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 2-4)}:\\
+\textbf{a)} Inversions are: (2, 1), (3, 1), (8, 6), (8, 1), (6, 1)
+
+\textbf{b)} if the set is sor in ascending order, it won't be 0 inversions in the set.
+
+\textbf{c)} Both of them are \(\Theta(n^2)\) because you have to take 1 value from the most
+right position and compare if it's less than the i value (left one) on the array.
+
+\textbf{d)}
+\begin{algorithm}
+    \caption{INVERSIONS}\label{InversionID}
+    \begin{algorithmic}[1]
+        \Function{Inversions}{$A, p, r$}
+            \State \textit{//On the else of the first while of Merge, add: Print(L[i], R[j])}
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+
+\subsection{\LARGE Caharcerizing Running Times}
+\setcounter{exercise}{0}
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.1-1)}:\\
+We could do the same with saying that \textit{k} is a multiple of 2. The left subarray
+has the biggests numbers, and the right one have the lowest numbers. If we want to move the
+biggests numbers to the right subarray, we should move \textit{n / 2} numbers and then another
+\textit{n / 2} to the left to move the lowest one at the begginig. Finally we have that
+we should move \(\frac{n}{2} \cdot \frac{n}{2} = \frac{n^2}{4} = \Omega(n^2)\)
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.1-2)}:\\
+The extern for loop, executes in the worst case \textit{n - 1}  times. The inner loop, executes 
+\textit{i + 1} to \textit{n} times. As mentioned before, the worst case is for i = 0, then
+it will be executed \textit{n - 1} times. In conclusion, the wors case is \((n - 1) \cdot 
+(n - 1) = O(n^2)\).
+
+On the other hand, supose that the array is divided in 2 subarrays, the left for the higer 
+values and the right for the lower ones. Althought, the extern for must iterate over all
+elements, so the better case is the same as the worst (\textit{n - 1}). Then the inner loop
+is the same as the worst case. The only thing that executes n/2 times is the instruction 
+inside the if and the swap. These operations are constant operations. In conclusion, the
+lower bound of the asymptotic behaviour is \((n - 1) \cdot (n - 1) = \Omega(n^2)\)
+
+\textbf{\(O(n^2) = \Omega(n^2) = \Theta(n^2)\)}
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.1-3)}:\\
+Consideramos un array \(A\) de tamaño \(n\), dividido en tres partes:
+\begin{itemize}
+    \item Primera parte: Las primeras \(\alpha n\) posiciones contienen los \(\alpha n\) valores más grandes.
+    \item Segunda parte: Las siguientes \((1 - 2\alpha)n\) posiciones son la parte media.
+    \item Tercera parte: Las últimas \(\alpha n\) posiciones contienen los \(\alpha n\) valores más grandes después de ordenar.
+\end{itemize}
+El número total de movimientos es:
+\[
+\text{Movimientos totales} = \alpha(1 - 2\alpha)n^2.
+\]
+Para que el argumento tenga sentido, necesitamos que \(0 < \alpha < \frac{1}{2}\).
+
+Maximizamos la función:
+\[
+f'(\alpha) = 1 - 4\alpha = 0 \quad \Rightarrow \quad \alpha = \frac{1}{4}.
+\]
+
+El número total de movimientos es:
+\[
+\frac{1}{4} \cdot \frac{1}{2} n^2 = \frac{1}{8}n^2.
+\]
+Por lo tanto, el tiempo de ejecución en el peor caso es \(\Theta(n^2)\).
+
+
+
+
 
 
 
