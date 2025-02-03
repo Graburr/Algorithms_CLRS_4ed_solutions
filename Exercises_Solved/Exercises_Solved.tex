@@ -224,6 +224,134 @@ Worst case as mentioned before is \(\Theta(n)\).
 The only thing you could do is a preprocessing step to check if it's alredy sorted or nearly
 to be sorted and then apply the algorithm who best fits when the best case was achieved.
 
+\refstepcounter{exercise}
+\textbf{Exercise 2.3-1)}:\\
+\begin{figure*}[h]
+    \includegraphics[scale=0.4]{Problem2_3_1.jpeg}
+    \centering
+\end{figure*}
+\newpage
+
+\refstepcounter{exercise}
+\textbf{Exercise 2.3-2)}:\\
+The "\textit{\textbf{if} \(p \neq r\)}" is not useful because \(p = 1\) and \(q > 1\), so the if
+will be evaluated to true, and the return (the termination of recursion) will execute without
+doing any recursion step.
+
+\refstepcounter{exercise}
+\textbf{Exercise 2.3-3)}:\\
+\textbf{Initialization}: The loop starts obtaning the first element to insert it in the 
+sorted array.
+
+\textbf{Maintenance}: On each iteration, the loop insert 1 element of the left or right array,
+then increment \textit{k} by 1, to insert on the next iteration the next value 1 by 1. The values
+that will be inserted with the first loop in the best case is \textit{n - 1} where n is the
+lenght of the subarray/array being sorted.
+
+\textbf{Termination}: In one of the last 2 whiles, it will be inserted all remaining values
+(could be values in the left or right array) until reach the nth values in the sorted array.
+
+\refstepcounter{exercise}
+\textbf{Exercise 2.3-4)}:\\
+\textit{n = 2}
+\[
+T(2) = 2
+\]
+The solution given says that:
+\[
+T(2) = 2 * \log_2 2 = 2 \cdot 1 = 2
+\]
+Induction hypotesis:
+\[
+T(k) = k \cdot \log_2 k
+\]
+Where k is a power of 2. We want to demostrate that \textit{n = 2k}.
+Use recurrence to calculate \(T(2k)\):
+\[
+T(2k) = 2T(k) + 2k \quad \rightarrow \quad T(2k) = 2 \cdot (k * \log_2 k) + 2k \quad \rightarrow
+\quad T(2k) = 2k \cdot (\log_2 k + 1) \quad \rightarrow \quad T(2k) = 2k \cdot \log_2 2k
+\]
+As we mentiones before, replacing \textit{n = 2k}, we conclude that the induction hypotesis
+is correct \textbf{\(n \cdot \log_2 n\)}
+
+\refstepcounter{exercise}
+\textbf{Exercise 2.3-5)}:
+\begin{algorithm}
+    \caption{INSERTION-SORT-RECURSIVE}\label{InsertionSortRecursiveID}
+    \begin{algorithmic}[1]
+        \Function{INSERTION-SORT-RECURSIVE}{$A, n$}
+            \If{\(n == 0\)}  
+                \Return
+            \EndIf
+            \State \Call{INSERTION-SORT-RECURSIVE}{$A, n - 1$}
+            \State \textit{key} $\gets$ \textit{A[n]}
+            \State $i \gets n - 1$
+            \While {$i \geq 0$ \textbf{and} $A[i] > key$}
+                \State $A[i + 1] \gets A[i]$
+                \State $i \gets i - 1$
+            \EndWhile
+            \State $A[i + 1] \gets key$
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+\newpage
+\refstepcounter{exercise}
+\textbf{Exercise 2.3-6)}:
+\begin{algorithm}
+    \caption{BINARY-SEARCH}\label{BinarySearchID}
+    \begin{algorithmic}[1]
+        \Function{BinarySearch}{$A, x, l, n$}
+            \If {\(l > n\)}
+                \Return
+            \EndIf
+            \State \textit{mid} \(\gets\) \(l + n / 2\)
+            \If {\(A[mid] > x\)}
+                \State \Call{BinarySearch}{$A, x, l, mid - 1$}
+            \ElsIf {\(A[mid] < x\)}
+                \State \Call{BinarySearch}{$A, x, mid + 1, r$}
+            \Else 
+                \quad \Return \textit{mid}
+            \EndIf
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+\refstepcounter{exercise}
+\textbf{Exercise 2.3-7)}:
+You can't use binary search because while you are sorting most part of the time, it won't
+be that value in the sorted array. Maybe you should make a variation of binary search to 
+find out in which direction has less difference betwen the number being search and then
+you should move all values 1 position to right and insert in the new position.
+
+On worst case, imagine that the worst value is at the least position, you should move
+n items to the right + n / 2 that cost to search all the. So it's  \(n \cdot \frac{n}{2} = \Theta(n^2)\)
+
+\refstepcounter{exercise}
+\textbf{Exercise 2.3-8)}:
+\begin{algorithm}
+    \caption{FIND-SUM-TWO-ELEMENTS}\label{FindSumTwoElementsID}
+    \begin{algorithmic}[1]
+        \Function{FindSumTwoElements}{$S, n, x$}
+            \State \Call{MergeSort}{S, 0, n - 1} \quad \textit{//\(\Theta(n * log n)\)}
+            \State \( i \gets 0 \)
+            \State \( j \gets n - 1 \)
+            \While {\( i < j \)} \quad \textit{//\(\Theta(n)\)}
+                \If {\( S[i] + S[j] = x \)}
+                    \State \Return \( i, j \)
+                \ElsIf {\( S[i] + S[j] < x \)}
+                    \State \( i \gets i + 1 \)
+                \Else
+                    \State \( j \gets j - 1 \)
+                \EndIf
+            \EndWhile
+            \State \Return \textit{No pair found}
+        \EndFunction
+    \end{algorithmic}
+\end{algorithm}
+
+
+
 
 
 \end{document}
