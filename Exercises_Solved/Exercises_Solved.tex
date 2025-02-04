@@ -523,6 +523,164 @@ El número total de movimientos es:
 \]
 Por lo tanto, el tiempo de ejecución en el peor caso es \(\Theta(n^2)\).
 
+\refstepcounter{exercise}
+\textbf{Exercise 3.2-1)}:
+\[
+0 \leq c_1g(n) \leq f(n) \leq c_2g(n) = \Theta 
+\]
+Prove that \(\max \{f(n), g(n)\} = O(f(n) + g(n)) \quad \Rightarrow \quad \max\{f(n),g(n)\}
+\leq c_2 \cdot (f(n) + g(n))\).
+
+If the max value is \textit{f(n)}, then we have \(f(n) \leq c_2 \cdot (f(n) + g(n))\).
+Also if the max value is \textit{f(n)}, then we have \(g(n) \leq c_2 \cdot (f(n) + g(n))\)
+If \(c_2 = 1\), and \(n \geq n_0\), the result is \(\max \{f(n), g(n)\} = O(f(n) + g(n))\).
+
+Prove that \(\max \{f(n), g(n)\} = \Omega(f(n) + g(n)) \quad \Rightarrow \quad \max\{f(n),
+g(n)\} \geq c_1 \cdot (f(n) + g(n))\).
+
+If the max value is \textit{f(n)}, then we have \(f(n) \geq c_1 \cdot (f(n) + g(n))\).
+Also if the max value is \textit{f(n)}, then we have \(g(n) \geq c_1 \cdot (f(n) + g(n))\)
+If \(c_1 = \frac{1}{2}\), and \(n \geq n_0\), the result is \(\max \{f(n), g(n)\} = \Omega
+(f(n) + g(n))\).
+
+\textbf{In conclusion}: \(\max \{f(n), g(n)\} = O(f(n) + g(n)) = \Omega(f(n) + g(n)) =
+\Theta(f(n) + g(n))\) for \(c_1 = \frac{1}{2}\) and \(c_2 = 1\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.2-2)}:\\
+It's meaningless because de O notation defines asymptoticaly, the upper bound of f(n). This 
+not mean \textit{"Is at least \(O(n^2)\)"} because it's only in the worst possible scenario.
+Althought, we need to define the ower bound, for example the asymptotic lower bound is 
+\(\Omega(n)\) that it's less than \(O(n^2)\). Hence we can't say \textit{"At least"} due to
+it could spend some value betwen \(O(n^2)\) on the worst case or \(\Omega(n)\) in the best
+cases.
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.2-3)}:\\
+With the properties of the powers, we have: 
+\[
+2^{n + 1} = 2^n \cdot 2^1 = O(\max\{2^n, 2^1\}) = O(2^n)
+\]
+The second one is wrong, because with the properties we can't remove the n there, so it
+should be \(O(2^{2n})\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.2-5)}:
+\[
+0 \leq c_1g(n) \leq g(n) \leq c_2g(n) = \Theta(g(n)) 
+\]
+\[
+\Omega(g(n)) = c_1g(n) \leq g(n) \quad c_1 = \frac{1}{2} \text{ and } n \geq n_0
+\]
+\[
+O(g(n)) = c_2g(n) \geq g(n) \quad c_2 = 2 \text{ and } n \geq n_0
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.2-6)}:\\
+All the values of the time spent by the algorithm, will be on \(\Omega(g(n)) = g(n)
+= O(g(n))\) if \(\Theta(g(n))\). Also we know that \(o(g(n)) > O(g(n))\) and 
+\(\omega(g(n)) < \Omega(g(n))\), so they won't have values in common.
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.2-7)}:\\
+\(\Omega(g(n, m)) = \{ f(n, m)\) : if there exists a constant \textit{c}, \(n_0\) and \(m_0\) 
+such that \(cg(n, m) \leq f(g, m)\) for all \( n \geq n_0\) or \(m \geq m_0\) and \(c > 0 \}\).
+
+\(\Theta(g(n, m)) = \{ f(n, m)\) if there exists a constant \(c_1\), \(c_2\), \(n_0\) and 
+\(m_0\) such that \(0 \leq < c_1g(n, m) \leq g(n, m) \leq c_2g(g, m)\) for all \(n \geq n_0\)
+or \(m \geq 0\) and \(c_1 > 0\), \(c_2 > 0 \}\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.3-1)}:\\
+\textit{f(n)} is monotically increasing because there is an \(f(m) \leq f(n)\). For \textit{g(n)}
+it's the same. Then we have: 
+\[
+f(m_1) \leq f(n_1) + g(m_2) \leq g(n_2) \quad \Rightarrow f(m_1) + g(m_2) \leq f(n_1) + g(n_2)
+\]
+Demostrate \(f(g(n))\):
+\[
+f(g(m)) \leq f(g(n)) \quad m \leq n
+\]
+Demostrate \(f(n) \cdot g(n)\) are non negative for an \(n_1 > 0, n_2 > 0, m_1 < n_1 and m_2 < n_2\) 
+\[
+f(m_1) * g(m_2) \leq f(n_1) * g(n_2)
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.3-2)}:
+\[
+\lfloor \alpha n \rfloor = \alpha n \quad \quad \lceil (1 - \alpha)n \rceil = (1 - \alpha)n
+\]
+\[
+\alpha n + (1 - \alpha)n = n(\alpha + 1 - \alpha) = n
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.3-3)}:\\
+Applying the properties of exponentials, we have
+\[
+(n + o(n))^k = n^k + o(n^k) \quad \Rightarrow \quad \Theta(\max \{n^k, n^k\}) = \Theta(n^k)
+\]
+With the property of ceil and floor, we know \(\lceil n \rceil^k \leq n^k \leq \lfloor n 
+\rfloor^k\), the problem says \(\Theta(n^k) = n^k\)
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.3-4)}:
+\begin{enumerate}[label=\alph*)]
+    \item Equation \(a^{\log_b c} = c^{\log_b a}\)
+    \[
+    \log_b c = x \quad \quad \log_b a = y
+    \]
+    \[
+    a^x = (b^y)^x \quad \Rightarrow \quad a^{\log_b c} = b^{yx}
+    \]
+    Use the relation \(c = b^x\)
+    \[
+    c^y = (b^x)^y \quad \Rightarrow \quad c^{\log_b a} = b^{xy}
+    \]
+    \[
+    a^{\log_b c} = b^{yx} = c^{\log_b a}
+    \]
+    \newpage
+    \item Demostrate equations 3.26, 2.27 y 3.28.
+
+    3.26) 
+    \[
+    n! = \sqrt{2\pi n} * \left(\frac{n}{e}\right)^n + 1 \quad \Rightarrow \quad (2\pi n)^
+    \frac{1}{2} * \left(\frac{n}{e}\right)^n + 1
+    \]
+    Removing the constant values that are \(2, \pi, e, 1\), the reamining values are:
+    \(n^{\frac{1}{2}} \cdot n^n = o(n^n)\).
+
+    3.27)
+    \[
+    n! \approx \sqrt{2 \pi n} \left(\frac{n}{e}\right)^n.
+    \]
+    Prove \( n! = \omega(2^n) \), that's mean:
+    \[
+    \frac{n!}{2^n} \to \infty.
+    \]
+
+    Dividiendo por \( 2^n \),
+    \[
+    \frac{n!}{2^n} \approx \sqrt{2\pi n} \left(\frac{n}{2e}\right)^n.
+    \]
+    For a bigger value of \( n \) , \( \frac{n}{2e} > 1 \), the term tends to infinity.
+    We can conclude that
+    \[
+    n! = \omega(2^n).
+    \]
+    \item \(\log_2(\Theta(n)) = \Theta(\log_2 n)\)
+    \[
+    \log_2(c_1 \cdot n) \leq \log_2(f(n)) \leq \log_2(c_2 \cdot n) \quad \Rightarrow \quad
+    \log_2 c_1 + \log_2 n \leq \log_2(f(n)) \leq \log_2 c_2 + \log_2 n.
+    \]
+    \(\log_2 c_1\) and \(\log_2 c_2\) are constants. Hence we have: \(\log_2(f(n)) = 
+    \Theta(\log_2 n) \quad \Rightarrow \quad \log_2(\Theta(n)) = \Theta(\log_2 n)\)
+\end{enumerate}
+
+
 
 
 
