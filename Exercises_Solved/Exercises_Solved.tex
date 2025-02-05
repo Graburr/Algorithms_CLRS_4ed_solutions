@@ -8,6 +8,9 @@
 \usepackage[noend]{algpseudocode}
 \usepackage{enumitem}
 \graphicspath{{../Images/}}
+\usepackage{titlesec}
+\titleformat{\subsection}{\LARGE\bfseries}{\thesubsection}{1em}{}
+
 
 % Customization of the document
 \usepackage[letterpaper, top=1.8cm, bottom=2.3cm, left=2cm, right=2cm, heightrounded]{geometry}
@@ -35,10 +38,10 @@
 
 \section{Chapter 1: Foundations}
 
-\subsection{\LARGE The Role of Algorithms in Computing}
+\subsection{The Role of Algorithms in Computing}
 I didn't make the exercise of this section because I didn't find them useful.
 
-\subsection{\LARGE Getting Started}
+\subsection{Getting Started}
 \setcounter{exercise}{0} % Start from 0 for the exercises in this section
 
 % Used to make a label for referencing later if it's necesary
@@ -471,7 +474,7 @@ right position and compare if it's less than the i value (left one) on the array
 \end{algorithm}
 
 
-\subsection{\LARGE Caharcerizing Running Times}
+\subsection{Caharcerizing Running Times}
 \setcounter{exercise}{0}
 
 \refstepcounter{exercise}
@@ -679,6 +682,74 @@ With the property of ceil and floor, we know \(\lceil n \rceil^k \leq n^k \leq \
     \(\log_2 c_1\) and \(\log_2 c_2\) are constants. Hence we have: \(\log_2(f(n)) = 
     \Theta(\log_2 n) \quad \Rightarrow \quad \log_2(\Theta(n)) = \Theta(\log_2 n)\)
 \end{enumerate}
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.3-5)}:\\
+As we saw, \(\lceil \log_2 n \rceil! = \log_2 n!\) applying the formula 3.28, we have that
+\(\log_2 n = \Theta(n \log_2 n)\). In conclusión, it's polinomially bounded.
+
+\(\lceil \log_2{\log_2 n} \rceil! = \log_2{\log_2 n} = \log_2{\Theta{n * \log_2 n}}\)
+with that we can show that is \textbf{not} polinomally bounded.
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.3-6)}:\\
+for the definition, we know \(\log_2^* n < 5\) (rarely will be upper to 5). If we supose that
+takes the value of \(n = 2^{65536} = 10^{\frac{65536}{\log_2 10}} \approx 10^{19.728}\) The result of
+\(\log_2^* 10^19.728 = 5\) for example, then we have \(\log_2 5 \approx  2.322\).
+
+On the other hand, for the same \textit{n} value, we have \(\log_2 10^19.728 \approx 65.535\)
+then looking the table, Applying the logarithm iteratively, we can see:
+\begin{enumerate}
+    \item \(\log_2 65.535 \approx 6.02\).
+    \item \(\log_2 6.02 \approx 1.37\)
+    \item \(\log_2 1.37 \approx 0.45\)
+\end{enumerate}
+Because we could apply 3 times the iteration, \(\log_2^*(\log_2 n) = 3\).
+\textbf{In conclusion}, \(\log_2^*(\log_2 n) >\) \(\log_2(\log_2^* n)\)
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.3-7)}:\\
+Substitute \(\phi = \frac{1 + \sqrt{5}}{2}\) in \(x^2 = x + 1\).
+\[
+\left(\frac{1 + \sqrt{5}}{2}\right)^2 = \frac{1 + \sqrt{5}}{2} + 1 \quad \Rightarrow \quad
+\frac{3 + \sqrt{5}}{2} = \frac{3 + \sqrt{5}}{2}  
+\]
+With the \(\widehat{\phi}\) is do the same procedure.
+
+\refstepcounter{exercise}
+\textbf{Exercise 3.3-9)}:\\
+supose \(\log_2 k = \log_2 n\), then operating we have: 
+\[
+\frac{k * \log_2 n}{\log_2 n} = \Theta\left(\frac{n}{\log_2 n}\right) \quad \Rightarrow \quad
+k = Theta\left(\frac{n}{\log_2 n}\right)
+\]
+
+\subsection{Divide and Conquer}
+\setcounter{exercise}{0}
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.1-1)}:\\
+\(T(n) = 8T(\lfloor\frac{n}{2}\rfloor + \Theta(1))\). As mentioned before, the ceil and floor
+doesn't matter on anylizing algorithms when \textit{n} is too big. Due to that, the result
+is the same \(T(n) = \Theta(n^3)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.1-2)}:\\
+The length of the matrix that you pass as a fourth parameter, now it should be \(k * n\), for
+bigger values of n and k, is the same as says, \(T(n) = 8T(\frac{k * n}{2}) + \Theta(1)\).
+Now the result is \(T(n) = \Theta(k * n^3)\). 
+
+The second option is the same as the first one. Inconclusion any of them is asymptoticaly
+faster than the other one, both of them have the same speed.
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.1-3)}:\\
+Now is \(\Theta(n^2)\) the driving function because you need to combine the solutions.
+Then \(T(n) = 8T(\frac{n}{2}) * \Theta(n^2)\). Applying the master theorem, \(n^{\log_2 8}
+= 3\), case 1 applies again. \(f(n) = O(n^{3 - \epsilon})\) for any positive \(\epsilon \leq
+1\)
+
+
 
 
 
