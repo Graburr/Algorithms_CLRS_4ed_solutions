@@ -790,13 +790,269 @@ C =
 \]
 
 \refstepcounter{exercise}
-\textbf{Exercise 4.2-2)}:
-You can find the pseudocoude on that website (it's not mine, it's from another one):
+\textbf{Exercise 4.2-2)}:\\
+You can find the pseudocode on that website (it's not mine, it's from another one):
 \href{https://atekihcan.github.io/CLRS/04/E04.02-02/}{https://atekihcan.github.io/CLRS/04/E04.02-02/}.
 
 I implemented it in C++ using the code of exercise 4.1-4 (adding the function to substract matrices).
 You can find the result of that code clicking there: \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/blob/main/chapter1/Divide_%26_Conquer/StrassensAlgorithm.cpp}
 {\textcolor{Blue}{StrassensAlgorithm.cpp}}.
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.2-3)}:\\
+The largest \textit{k} should be 7 because it's the number os time that the algorithm is 
+called recursively. Also we can prove that applying the case 1 of the master theorem to 
+\(T(n) = aT\left(\frac{n}{2}\right) + \Theta(1)\) where \(a = k\) for the reasons explained 
+at the beggining.
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.2-4)}:\\
+Strassen's alrogithm is better that the navie way of multyplying matrices.
+
+Then we know that the Strassen's algorithm spends \(\Theta(n^{\log_2 7}) = \Theta
+(n^{2.8})\). Then applying the \textit{68 x 68} where \(n = 68\), applying this method the
+amount of time required is \(68^{2.8} = 135215\). For \(n = 70\), the result is \(70^{2.8}
+ = 146647\). The last one is \(n = 72\) and the result is \(72^{2.8} = 158683\). The Strassen's
+alrogithm is a little bit inneficienter than the Pan ways to multiply this particular
+matrices. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.2-6)}:\\
+It will be done using block matrices (join 2 differents matrices in 1 matrice to operate).
+Then the solution will be \(M^2 \quad \Rightarrow \quad O((2n)^\alpha) = O(n^\alpha)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.7-2)}:\\
+To check that is polynominal-growt we need to proof \(\frac{f(n)}{n^c}\) for \(f(n) = n^2\).
+We need to check if  there exists such a constat c that: \(\frac{n^2}{n^c} = n^{2 - c}\).
+In that case for c = 3 we have: \(\frac{n^2}{n^3} = n^-1 = \frac{1}{n}\). Since \(\frac{1}{n}\)
+is bounded for any \(n \geq 1\), \(f(n) = n^2\) satisfies the polynominal growth condition.
+
+On the other hand we will apply the same argumentation. we need to check if there exists any
+\(c\) for \(\frac{2^n}{n^c}\). We supose the case of \(\lim_{n \to \infty} \frac{2^n}{n^c}\).
+In that case \(2^n\) growth exponentialy to the \(\infty\) while \(n^c\) growth polynomially.
+Hence the exponentialy is not bounded and \(2^n\) does not satisfies the polynominal-growth.
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.7-3)}:\\
+If \( n \) tends to \( \infty \), the smallest possible value of \( f(n) \) will be 0, 
+assuming it has a negative exponent. On the other hand, if \( f(n) \) is a polynomial
+function like \( n^2 \), all values will be well-defined because it satisfies the 
+polynomial-growth condition.
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.7-4)}:\\
+As explained before \(2^n\) doesn't satisfies the polinominal-growth condition.
+
+To proof \(f(\Theta(n)) = \Theta(f(n))\) we need a constant \textit{c} that scales in the 
+same asymptotic way. In that case: \(f(nc) = 2^{nc} = (2^n)^c = \Theta(f(n))\). So this is 
+a valid example.
+
+\refstepcounter{exercise}
+\textbf{Exercise 4.7-5)}:
+\begin{enumerate}[label=\alph*)]
+    \item \(a_1 = a_2 = a_3 = 1\), \(b_1 = 2\), \(b_2 = 3\), \(b_4 = 6\).
+    We need to find a p value that \(\left(\frac{1}{2}\right)^p + \left(\frac{1}{3}\right)
+    ^p + \left(\frac{1}{6}\right)^p = 1\). For \(p = 0\), the result is 3. for \(p = 1\), 
+    the result is: \(p = 0.9999...\). Then we know that \(0 < p < 1\). \(f(x) = n\log_2 n\)
+
+    \begin{align*}
+        T(n) &= \Theta\left(n^p\left(1 + \int_{1}^{n}\frac{f(x)}{x^{p + 1}}\,\mathrm{d}x \right)\right) \\
+        &= \Theta\left(n^p\left(1 + \int_{1}^{n}x^{-p}\log_2 x\,\mathrm{d}x \right)\right) \\
+        &= 1 + \frac{n^{1 - p}\log_2 n}{1 - p} - \frac{n^{1 - p}}{(1 - p)^2}
+    \end{align*}
+    For \(p = 1\) we see the biggest order is \(T(n) = \Theta(n\log_2 n)\).
+\end{enumerate}
+
+\subsection{Probabilistic Analysis and Randomized Alrogithms}
+
+
+\setcounter{exercise}{0}
+Note: Most exercises of this part weren't done because it wasn't my scope of understanding
+that book. Anyway, I just suck at learning it and I dont have too much free time to
+roll up my sleves and learn that perfectly. Maybe in the future I will try this again.
+
+\refstepcounter{exercise}
+\textbf{Exercise 5.1-1)}:\\
+You know who is better because best starts on 0, that is the lees rank that u can achieve.
+The biggest rank is bound at the upper with a maximum score of \textit{n}. Betwen on that 
+interval of scores you can index eassly each worker by the score he got. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 5.1-2)}:\\
+An imlementation could be multiply a for the value that was got by \textit{Random(0, 1)}
+and then make another math operation with b for example to introduce aleatority and give
+as a result the number between a and b. That operations could be:
+\(a + \lfloor(Random(0, 1) \cdot (b - a + 1))\rfloor\) That would give us a number between
+[0, b - a + 1] and then adding a, we take a value between [a, b].
+
+The expected running time is \(O(1)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 5.1-3)}:\\
+We see the 2 posible values that exists with p and 1 - p are:
+\begin{align*}
+    P(00) &= (1 - p)(1 - p), \\
+    P(01) &= (1 - p)p, \\
+    P(10) &= p(1 - p), \\
+    P(11) &= p p.
+\end{align*}
+
+01 and 10 happends with the same probability. If we have 01 we return 0. On the other hand
+if we have 10 return 1. If neither of that values, keep trying until get 1 of these values.
+
+\newpage
+\begin{algorithm}
+\caption{Generación de bit imparcial a partir de BIASED-RANDOM}
+\begin{algorithmic}
+    \Procedure{Unbiased-Random}{}
+        \While{true}
+            \State first $\gets$ BIASED-RANDOM()
+            \State second $\gets$ BIASED-RANDOM()
+            
+            \If{first = 0 \textbf{and} second = 1}
+                \State \Return 0
+            \ElsIf{first = 1 \textbf{and} second = 0}
+                \State \Return 1
+            \EndIf
+        \EndWhile
+    \EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+Running time is \(\frac{2}{2p(1 - p)} = \frac{1}{p(1 - p)} = O\left(\frac{1}{p(1 - p)}\right)\)
+
+\refstepcounter{exercise}
+\textbf{Exercise 5.2-1)}:\\
+First of all we will use the same indicator random variable as mentioned in the book few 
+pharagraphs before. The probability of being hired is \(\frac{1}{n}\) \textit{from 1 to n - 1},
+That's mean because it's presented in a random order, it could be someone before you that
+have better scores and he will be hired instead of you. 
+
+To hire exactly n times, its \(\frac{1}{n!}\) because there is n permutations where you hire
+everyone but only one of them is correct.
+
+\refstepcounter{exercise}
+\textbf{Exercise 5.2-2)}:\\
+\(\frac{(n - 1)(n - 2)!}{n!}\) There is n - 1 positions to place the best candidate and
+also you have n - 2 possibilities of place 2 person to hire them at the same time.
+
+\refstepcounter{exercise}
+\textbf{Exercise 5.2-3)}:\\
+Let \( X = \sum_{i=1}^{n} X_i \), where \( X_i \) is the value of the \( i \)-th die. We use indicator random variables \( I_i(k) \), which take the value 1 if die \( i \) shows the value \( k \), and 0 otherwise. Then we can write:
+
+\[
+X_i = \sum_{k=1}^{6} k \cdot I_i(k)
+\]
+
+The expected value of \( X_i \) is:
+
+\[
+E[X_i] = E\left[ \sum_{k=1}^{6} k \cdot I_i(k) \right] = \sum_{k=1}^{6} k \cdot E[I_i(k)]
+\]
+
+Since \( E[I_i(k)] = \frac{1}{6} \), we get:
+
+\[
+E[X_i] = \sum_{k=1}^{6} k \cdot \frac{1}{6} = \frac{1}{6} (1 + 2 + 3 + 4 + 5 + 6) = 3.5
+\]
+
+Now, the expected value of \( X \) is:
+
+\[
+E[X] = E\left[ \sum_{i=1}^{n} X_i \right] = \sum_{i=1}^{n} E[X_i] = n \cdot 3.5
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 5.2-5)}:\\
+\(X_i = I{customer gets his own hat}\). Probability of customer \textit{i} recieves his 
+own hat is \(E[X_i] = Pr{I} = \frac{1}{n}\).
+
+\[
+E[x_i] = E \left[\sum_{i = 1}^{n} X_i\right] = \sum_{i = 1}^{n} E[X_i] = \sum_{i = 1}^{n} 
+\frac{1}{n} = \frac{n}{n} = 1
+\]
+The number of costumers that receives his own hat is 1.
+
+\refstepcounter{exercise}
+\textbf{Exercise 5.2-6)}:\\
+\(X_ij = I{an inversion was found}\). Probability of the inversion \textit{ij} to be found
+is \(E[X_ij] = Pr{I} = \frac{1}{2}\). Number of inversions is:
+\[
+E[X_{ij}] = E \left[\sum_{1 \leq i \leq j \leq n}^{n} X_{ij}\right] = \sum_{1 \leq i \leq j
+\leq n}^{n} E[X_{ij}] = \frac{1}{2} (^n_2) = \frac{n(n - 1)}{4}.
+\]
+
+\section{Sorting and Order Statics}
+
+\subsection{Heapsort}
+\setcounter{exercise}{0}
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.1-1)}:\\
+The minimum number of elements is: \(2^h\) and the maximum is \(2^{h + 1} - 1\)
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.1-2)}:\\
+With the tree of the figure 6.1 for example the element of position 4 (whose value is 8)
+it's on height \(\lfloor \log_2 4 \rfloor = 2\). And as the book explained before, That's
+the second level.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.1-3)}:\\
+You have to keep in mind the property that for max-heap, \(A[parent] \geq A[child]\). Following
+that, you achieve the tree like in figure 6.1.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.1-4)}:\\
+In the most right position on the leafs.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.1-5)}:\\
+Between the root or level 1 or 2.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.1-6)}:\\
+If it's sorted in ascending order, yes, it's a min-heap.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.1-7)}:\\
+No, The parent with value 15 has a child with value 16 and the condition of max-heap isn't 
+satisfy.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.1-8)}:\\
+We are going to supose the same tree as figure 6.1. That tree has 10 elements. We know the
+leafs are 9, 3, 2, 4, 1  in this case, that's 5 leafs. In that case the number 9 are at the 
+index 6, which is the same as say \(\frac{10}{2} + 1\) as the statement said. With the other
+numbers is the same as that. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.2-1)}:\\
+Done on the next page
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.25]{Problem6_2_1.jpeg}
+\end{figure}
+\newpage
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.2-2)}:\\
+Supose \(A_1\) and \(A_2\) are the childrens of the root. They are also the roots of another 
+subtrees. We know they are balanced so one subtree can't have more nodes that the other subtree.
+If one tree has more than \(\frac{2n}{3}\) nodes, the other one must have \(\frac{n}{3}\) and
+that would violate the properties of the binary trees. 
+
+The smallest possible value is \(\alpha = \frac{2}{3}\). 
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.2-3)}:\\
+The pseudocode used as reference is the one that appears on page 165.
+It would be the same but only changing the conditions of the first 2 if. Also we can change
+the variable name \(largest\) with \(lowest\)
+The changes would be \(if l \leq A.heap_size and A[l] < A[i] then lowest = l\), on the other
+if would be \(if r \leq A.heap_size and A[r] < A[lowest] then lowest = r\). The reamining
+lines of the pseudocode would be the same.
 
 
 
