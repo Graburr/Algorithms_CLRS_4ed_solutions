@@ -1030,11 +1030,11 @@ numbers is the same as that.
 \refstepcounter{exercise}
 \textbf{Exercise 6.2-1)}:\\
 Done on the next page
+\newpage
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.25]{Problem6_2_1.jpeg}
 \end{figure}
-\newpage
 
 \refstepcounter{exercise}
 \textbf{Exercise 6.2-2)}:\\
@@ -1066,7 +1066,103 @@ that, any comparasions will be done.
 
 \refstepcounter{exercise}
 \textbf{Exercise 6.2-6)}:\\
-Resolved on the file: 
+Resolved on the file: \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/blob/main/chapter2/Sorting_and_Order_Statics/6.2-6.cpp}
+{\textcolor{Blue}{6.2-6.cpp}}
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.2-7)}:\\
+Supose that you start from the root. Also supose that from the inmediate children of the 
+root, it will be called recursively. As we are going down until reach a leaf, also we 
+know a tree has \(\log_2 n \) levels in that case it's the same as the amount of time
+the recursive call will be done. Due to that, the worst case is \(O(\log_2 n)\) as the 
+sentence says.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.3-1)}:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.32]{Problem6_3_1.jpeg}
+\end{figure}
+\newpage
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.3-2)}:
+\[
+\frac{n}{2^h} \geq \frac{1}{2} \quad \Rightarrow \quad n \geq \frac{1}{2} 2^h \quad
+\Rightarrow \quad \log_2 n \geq h
+\]
+Because \(h\) is the height of the tree, and the height starts from 0, the result is:
+\[
+0 \leq h \leq \lfloor \log_2 n \rfloor 
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.3-3)}:\\
+Doing from bootom-up you have guarantees that the lees posible subtree is ordered. Hence
+on the fathers subtrees, when you order them you have guarantees that the child subtree
+is ordered. While on the other way we cant guarantee that. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.3-4)}:\\
+We know that on each height on the tree, the numbers of elements got doubled. Also, the
+number of elements in the heap, is at least \(n\) and the ttal number of elements are
+\(2^h + 1\). Due to that the result is what the sentence is asking about proof.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.4-1)}:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.32]{Problem6_4_1.jpeg}
+\end{figure}
+\newpage
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.4-2)}:\\
+\textbf{Initialization:} At the start of the loop (before the first iteration), the
+subarray \( A[1:n] \) is not sorted, but in the first iteration of the loop, the
+\texttt{MaxHeapify} function is executed over the entire array, ensuring that the
+array becomes a \textbf{max-heap}. Then, the largest element (at the root of the max-heap)
+is placed in its final position, that is, at the last position of the array, ensuring
+that the subarray \( A[1:n] \) contains the smallest elements, while \( A[n] \) contains
+the largest element.
+
+\textbf{Maintenance:} In each iteration of the loop, the following steps occur:
+
+\begin{enumerate}
+    \item The subarray \( A[1:i] \) is still a \textbf{max-heap} containing the \( i \)
+    smallest elements of \( A[1:n] \).
+    \item Then, the element at the root (the largest one) is moved to position \( i \).
+    At this point, the subarray \( A[1:i-1] \) contains the \( i-1 \) smallest elements
+    sorted (i.e., the largest ones).
+    \item The subarray \( A[i:n] \) now contains largest elements sorted.
+    \item The size of the heap is reduced by one (since the largest value has been placed
+    in its correct position), and the \texttt{MaxHeapify} function is applied again to
+    restore the heap property in the subarray \( A[1:i-1] \).
+    \item This process repeats until the array is completely sorted.
+\end{enumerate}
+
+\textbf{Termination:} The loop terminates when \( i \) reaches 1, that is, when the
+array is completely sorted. At the end of all iterations, the subarray \( A[1:n] \)
+will be sorted in increasing order, and the max-heap property will have been maintained
+at all times.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.4-3)}:\\
+It would be \(\Omega(n \log_2 n)\) because on the inner loop it will always remove the largest
+value, replace the root value with the less one, and then execute the function, it makes 
+all time expend \(\Theta(n \log_2 n)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.4-4)}:\\
+Explained on the before exercise. Same logic as this.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.4-5)}:\\
+It's the same explaination as the 2 before exercise. In this case the first function outside
+the loop could be in the average time, but the inner loop will be always \(\Theta(n \log_2 n)\).
+
+
+
 
 
 
