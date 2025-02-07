@@ -7,7 +7,7 @@ inline size_t Left(size_t i) { return 2 * i; }
 
 inline size_t Right(size_t i) { return 2 * i + 1; }
 
-template <typename T> void MaxHeapofy(std::vector<T> A, size_t i) {
+template <typename T> void MaxHeapify(std::vector<T> &A, size_t i) {
   size_t left = Left(i);
   size_t right = Right(i);
   size_t largest = i;
@@ -20,5 +20,6 @@ template <typename T> void MaxHeapofy(std::vector<T> A, size_t i) {
   }
   if (largest != i) {
     std::swap(A[i], A[largest]);
+    MaxHeapify(A, largest);
   }
 }
