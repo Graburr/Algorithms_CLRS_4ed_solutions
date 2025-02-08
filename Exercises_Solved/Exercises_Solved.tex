@@ -1161,7 +1161,19 @@ Explained on the before exercise. Same logic as this.
 It's the same explaination as the 2 before exercise. In this case the first function outside
 the loop could be in the average time, but the inner loop will be always \(\Theta(n \log_2 n)\).
 
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-1)}:\\
+It just extract the element at the first position (because it's the biggest one). Then do
+the swap as HeapSort with the last element, to move at the first position the next biggest
+element.
 
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-2)}:\\
+Is added on the index with the value of textit{heap\_size}, then when calling the function
+\textit{Max\_heap\_increase\_key}, it will compare the value of the key with its parent keys,
+and will change the position if the parent key is less than the new key to be inserted.
+When that condition is not satisfied (or the new key reaches the root), it will end the
+procedure of insert because it will be inserted in the correct position.
 
 
 
