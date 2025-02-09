@@ -1,3 +1,9 @@
+/*
+
+This file need to be compiled and linked with HeapSort.cpp.
+
+*/
+
 #include "PriorityQueue.h"
 
 template <typename T> NodeHeapTree<T> MaxHeapMaximum(HeapTree<T> &heap_tree) {
@@ -16,7 +22,7 @@ template <typename T> NodeHeapTree<T> MaxHeapExtractMax(HeapTree<T> &heap_tree) 
 }
 
 template <typename T>
-void MaxHeapIncrease(HeapTree<T> &heap_tree, NodeHeapTree<T> &x, int k) {
+void MaxHeapIncreaseKey(HeapTree<T> &heap_tree, NodeHeapTree<T> &x, int k) {
   if (k < x.key) {
     throw std::runtime_error("new key is smaller than current key\n");
   }
@@ -41,7 +47,7 @@ template <typename T> void MaxHeapInsert(HeapTree<T> &heap_tree, NodeHeapTree<T>
 
   heap_tree.A[heap_tree.heap_size].index = heap_tree.heap_size;
   ++heap_tree.heap_size;
-  MaxHeapIncrease(heap_tree, heap_tree.A[heap_tree.heap_size - 1], key);
+  MaxHeapIncreaseKey(heap_tree, heap_tree.A[heap_tree.heap_size - 1], key);
 }
 
 template <typename T> void printHeap(const HeapTree<T> &heap) {

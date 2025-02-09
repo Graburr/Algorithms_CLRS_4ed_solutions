@@ -32,4 +32,6 @@ template <typename T> void HeapSort(HeapTree<T> &heap_tree, size_t n) {
   }
 }
 
+// Declared explicitly to use this especialization of the template on the file
+// PriorityQueue.cpp
 template void MaxHeapify<int>(HeapTree<int> &heap_tree, size_t i);

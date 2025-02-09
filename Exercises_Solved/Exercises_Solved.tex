@@ -1175,6 +1175,90 @@ and will change the position if the parent key is less than the new key to be in
 When that condition is not satisfied (or the new key reaches the root), it will end the
 procedure of insert because it will be inserted in the correct position.
 
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-3)}:\\
+the functions \textit{Min-Heap-Minimum} and \textit{Min-Heap-Exctract-Min} are the same as
+the max version because the min-heap will have the least value possible on the root. On the
+\textit{Min-Heap-Decrease-Key}, the only change needed is at the while condition. The max
+version has \(while i > 0 \textit{ and } A[Parent(i)].key < A[i].key\), while the min version 
+would be \(while i > 0 \textit{ and } A[Parent(i)].key > A[i].key\), changing the less operator
+by the greater operator. The change needed on \textit{Min-Heap-Insert} is \(-\infty\) by
+\(\infty\). 
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-4)}:
+\begin{algorithm}[H]
+    \caption{MAX-HEAP-DECREASE-KEY($A$, $i$, $k$)}
+    \begin{algorithmic}[1]
+        \State \textbf{Input:} A max-heap \(A\), index \(i\), new key value \(k\) with \(k \le A[i].\text{key}\)
+        \State \textbf{Output:} Updated max-heap with \(A[i].\text{key} = k\)
+        \If{\(k > A[i].\text{key}\)}
+            \State \textbf{error} "new key is larger than current key"
+        \EndIf
+        \State \(A[i].\text{key} \gets k\)
+        \State \textbf{call} MAX-HEAPIFY\((A,i)\)
+    \end{algorithmic}
+\end{algorithm}
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-5)}:\\
+It could contain any value. Also it could take a value larger than the key and it will cause 
+an error, so adding that value, we make sure that no error will occur.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-6)}:\\
+\textit{Max-Heapify} "sinks" the element correcting the errors at the directoin to their 
+childs. The violation that can happens is that the new key value is larger than it's father,
+o fix that it wuld need to buuble up. So with the function \textit{Max-Heapify} this can't
+be done, because it asume that all subtrees are max-heaps. Therefore, it couldn't be that
+case and it could be positioned in a bad position.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-7)}:\\
+\textbf{Initialization:} At the beggining, we have a new element in a leaf, the a and b
+conditions are true but the c condition can occur with the new element inserted.
+
+\textbf{Maintenance:} On each iteration it will interchange the child with the father if the
+father has lees value key than the child. Therefore the condition a and b will be satisfied
+on each iteration if that change is done. But the biggest subtrees couldnt be satisfied leading
+to the option c. Therefore it will be changing all time with their fathers until satisfies
+the condition that \(A[1:A.heap-size]\) satisfies the max-heap property.
+
+\textbf{Termination:} When the while loops end. The condition a and b will be true for all
+possible subtrees, but the condition c wont' be satisfied because the start invariant which
+says \(A[1:A.heap-size]\) satisfies the max-heap property, it will be true to every subtree.
+Hence it's satisfies the condition when the first call is done to that function.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-8)}:\\
+The idea is to move to the bottom just the key values, it will make only 1 assigment. Then
+when you need to retrieve the objects with that values, you only need to retrieve the key
+value and find which object is associated with that key value.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-9)}:\\
+To each element that is inserted, you start associating a key with the biggest possible
+value. Doing that you make sure that the first value inserted it will be the first value
+to be extracted when the function \textit{Max-Heap-Extract-Max} is called (is the analogous)
+function for the pop function of a queue.
+
+\refstepcounter{exercise}
+\textbf{Exercise 6.5-10)}:\\
+Replace the node to be deleted witht he last node of the heap. Update the size of the heap
+(incrementing it by 1), and then call \textit{Max-Heapify} to sort again the elements.
+This function called has a runtime of \(O(\log_2 n)\) as we explained at exercise done before.
+Due to that this function has a complexity of \(O(\log_2 n)\) too.
+
+\subsection{QuickSort}
+\setcounter{exercise}{0}
+
+\refstepcounter{exercise}
+\textbf{Exercise 7.1-1)}:\\
+\begin{align*}
+    \includegraphics[scale=0.5]{Problem7_1_1.jpeg}
+\end{align*}
+\newpage
+
 
 
 

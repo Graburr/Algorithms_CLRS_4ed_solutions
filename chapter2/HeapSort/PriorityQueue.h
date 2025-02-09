@@ -7,7 +7,7 @@ template <typename T> NodeHeapTree<T> MaxHeapMaximum(HeapTree<T> &heap_tree);
 template <typename T> NodeHeapTree<T> MaxHeapExtractMax(HeapTree<T> &heap_tree);
 
 template <typename T>
-void MaxHeapIncrease(HeapTree<T> &heap_tree, NodeHeapTree<T> &x, int key);
+void MaxHeapIncreaseKey(HeapTree<T> &heap_tree, NodeHeapTree<T> &x, int key);
 
 template <typename T> void MaxHeapInsert(HeapTree<T> &heap_tree, NodeHeapTree<T> &&x);
 
