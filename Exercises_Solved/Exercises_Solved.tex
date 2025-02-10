@@ -1496,4 +1496,77 @@ question.
     \end{algorithmic}
 \end{algorithm}
 
+\refstepcounter{exercise}
+\textbf{Exercise 8.3-1)}:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.3]{Problem8_3_1.jpeg}
+\end{figure}
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.3-2)}:\\
+Insertion sort, merge sort are stables. On the other hand, heapsort and QuickSort aren't 
+stables.
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.3-3)}:\\
+\textbf{Base Case:} For $d=1$, radix sort uses a stable sort on one digit.
+Thus, the array is correctly sorted by that digit.\\[1ex]
+\textbf{Inductive Hypothesis:} Assume that after sorting by $d-1$ digits,
+the array is correctly sorted with respect to the $d-1$ least significant 
+digits.\\[1ex]
+\textbf{Inductive Step:} Now, sort by the $d$th digit using a stable sort.
+Because the sort is stable, elements with equal $d$th digits retain their
+relative order from the previous pass (sorted by the lower $d-1$ digits).
+Thus, the entire array becomes sorted by all $d$ digits.\\[1ex]
+\textbf{Conclusion:} By induction, radix sort sorts the array correctly.
+The proof requires the stability assumption in the inductive step,
+to preserve the order established by the lower digits when sorting by
+a higher digit.
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.3-5)}:\\
+It could be make using radix sort because they are positive numbers. We need to know if
+the \(n^3\) are dozens, hundreds, to set the value d for the radix sort algorithm. Then
+apply radix sort to sort it in \(O(d(n))\). Keep in mind that values that have less length
+that \(n^3\), will be evaluated to 0 when their length is exceded, making them be at the
+first position.
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.3-6)}:\\
+It will require \textit{d} passes. In the worst case there will be 10 piles of card at the
+same time.
+
+\subsection{Medians and Order Statics}
+\setcounter{exercise}{0}
+
+\refstepcounter{exercise}
+\textbf{Exercise 9.1-1)}:\\
+Solution on cpp: \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/blob/main/chapter2/Medians_and_Order_Statics/Exercise9.1_1.cpp}
+{\textcolor{Blue}{Exercise9.1\_1.cpp}}.
+
+\refstepcounter{exercise}
+\textbf{Exercise 9.1-2)}:\\
+As explained before it's necesary \(3\lfloor\frac{n}{2}\rfloor\) if it's odd, or \(3(n-2)/2\)
+if it's even.
+
+\refstepcounter{exercise}
+\textbf{Exercise 9.1-3)}:\\
+To determine the fastest horse need \(\frac{25}{n} + 1\) where \(n\) it's the amount of horses
+that race at a time. It will need also the same, to take the 3 fastest one. Instead of only
+store the fastest one on the sixth race, it will need to store the 3 best horses on the sixth
+race.
+
+\refstepcounter{exercise}
+\textbf{Exercise 9.1-4)}:\\
+Each pair requires 1 comparison to find both the local maximum and minimum.  
+After pairing, you have \( \frac{n}{2} \) maximum candidates and \( \frac{n}{2} \) minimums.  
+For odd \(n\), one extra comparison is needed for the unpaired element.  
+Next, you need \( \frac{n}{2} - 1 \) comparisons to find the overall maximum.  
+Similarly, \( \frac{n}{2} - 1 \) comparisons are required to find the minimum.  
+Thus, the total number of comparisons is \( \left\lceil \frac{3n}{2} \right\rceil - 2 \).  
+This is the lower bound for the number of comparisons in the worst case.
+
+
+
 \end{document}
