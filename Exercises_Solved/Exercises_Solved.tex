@@ -36,7 +36,7 @@
 
 \maketitle
 
-\section{Chapter 1: Foundations}
+\section{Foundations}
 
 \subsection{The Role of Algorithms in Computing}
 I didn't make the exercise of this section because I didn't find them useful.
@@ -1253,18 +1253,247 @@ Due to that this function has a complexity of \(O(\log_2 n)\) too.
 \setcounter{exercise}{0}
 
 \refstepcounter{exercise}
-\textbf{Exercise 7.1-1)}:\\
+\textbf{Exercise 7.1-1)}:
 \begin{align*}
     \includegraphics[scale=0.5]{Problem7_1_1.jpeg}
 \end{align*}
 \newpage
 
+\refstepcounter{exercise}
+\textbf{Exercise 7.1-2)}:\\
+It returns the last value of the array, in other words, q = r. To fix that we could introduce
+a boolean value initialized to false. If any swap happends, set that boolean to true. At the
+end, if the boolean is false, return \(\lfloor (p + r)/2 \rfloor\). 
 
+\refstepcounter{exercise}
+\textbf{Exercise 7.1-3)}:\\
+At the beggining, \(p = 1\) and \(r = n\) where n it's the size of the array. Due to that,
+the for loop iterates n elements of the array.
 
+\refstepcounter{exercise}
+\textbf{Exercise 7.1-4)}:\\
+Change the \(if A[j] \leq x\) by \(if A[j] > x\) To sort in decrease order.
 
+\refstepcounter{exercise}
+\textbf{Exercise 7.2-1)}:\\
+Induction hypotesis used is \(T(m) = cm^2\). \(T(n) \leq c(n - 1)^2 + kn \leq cn^2\). Due 
+to that, the solution is \(T(n) = cn^2\).
 
+\refstepcounter{exercise}
+\textbf{Exercise 7.2-2)}:\\
+We are on the case \textit{a} of figure 7.5. Then \(T(n) = T(n - 1) + \Theta(n) = \Theta(n^2)\).
 
+\refstepcounter{exercise}
+\textbf{Exercise 7.2-3)}:\\
+Because all elements are less than the pivot, we are on the partition case of the exercise
+7.2-1 because 1 subarray will be empty and the other one will have \(n - 1\) values. Hence
+the running time is \(\Theta(n^2)\).
 
+\refstepcounter{exercise}
+\textbf{Exercise 7.2-4)}:\\
+We have to remaind that Insertion Sort is good when all elements are almost sorted. In that
+case insertion sort is \(O(n + d)\) where \textit{d} is too small. Therefore the running
+time is \(O(n)\). While QuickSort, have to select the pivot, then compare the elements,
+move them depends of the pivot, etc. Due to that, Insertion Sort is \(O(n \log_2 n)\) which
+is slower than \(O(n)\).
 
+\refstepcounter{exercise}
+\textbf{Exercise 7.2-5)}:\\
+This exercise is the same as the Figure 7.4 but with constant values. One array will be
+partitioned by the contstant \(\alpha\) and the other one by \(\beta\). Because \(\beta\)
+is bigger, this partition will end later than \(\alpha\). However each one will have a depth
+\(\log_{1 / \alpha} n\) and the other one \(\log_{1 / \beta} n\). 
+
+\refstepcounter{exercise}
+\textbf{Exercise 7.2-6)}:\\
+Assume we have an array of \( n \) distinct elements where all permutations are equally 
+likely.
+For the partition to be at least as balanced as \( (1-\alpha):\alpha \) (with \(0 < \alpha \le \frac{1}{2}\)), the pivot must be chosen among the elements ranked between
+\[
+\lceil \alpha n \rceil \quad \text{and} \quad \lfloor (1-\alpha) n \rfloor.
+\]
+The number of such “good” pivot positions is approximately
+\[
+\lfloor (1-\alpha)n \rfloor - \lceil \alpha n \rceil + 1 \approx (1-2\alpha)n.
+\]
+Since each element is equally likely to be chosen as the pivot, the probability of a 
+balanced split is
+\[
+\frac{(1-2\alpha)n}{n} = 1-2\alpha.
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 7.3-1)}:\\
+Because for the same inputs on each execution, the result it isn't the same because there is
+a random factor on the algorithm. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 7.3-2)}:\\
+The best one is: \(T(n) = 2T(\frac{n}{2}) + O(1) = O(n)\).
+
+The worst is : \(T(n) = T(n - 1) + O(1) = O(n)\).
+
+\subsection{Sorting in Linear Time}
+\setcounter{exercise}{0}
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.1-1)}:\\
+Following the theorem 8.1, the possible depth is \(\log_2 h\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.1-3)}:\\
+Supose for the sake of contradiction, that there exists a comparison
+sort that runs in linear time, say \(O(n)\), on at least half of the inputs.
+That is, there exists a constant \(c>0\) such that for at least
+\(\frac{n!}{2}\) inputs,
+\[
+T(n) \le c\, n.
+\]
+
+Let the running time on the remaining inputs be at most \(O(n\log n)\)
+(since no algorithm can beat the \(\Omega(n\log n)\) worst-case lower bound).
+Then the overall average running time would be bounded by
+\[
+\frac{1}{n!}\Biggl(\frac{n!}{2}\cdot c\, n + \frac{n!}{2}\cdot O(n\log n)\Biggr)
+=\frac{1}{2}\cdot c\, n+\frac{1}{2}\cdot O(n\log n)=O(n\log n).
+\]
+
+This suggests that the average running time is only a constant factor
+times \(n\log n\). However, the decision tree lower bound implies that almost
+all inputs (i.e., a non-negligible fraction) must incur \(\Omega(n\log n)\)
+comparisons to reach the lower bound. In other words, if half the inputs were as
+fast as \(O(n)\), the average could not be as high as \(\Omega(n\log n)\).
+
+Thus, no comparison sort can run in \(O(n)\) time on at least half of the
+\(n!\) inputs.
+
+\textbf{What about a fraction \(1/n\) or \(1/2^n\)?}\\[1mm]
+If an algorithm were to run in linear time on a fraction \(1/n\) (or \(1/2^n\))
+of the inputs, the contribution of those inputs to the overall average would be
+\[
+\frac{1}{n!}\Biggl(\frac{n!}{n}\cdot O(n)\Biggr)=O(1)
+\quad \text{(or even smaller for }1/2^n\text{)},
+\]
+while the remaining inputs (which form almost all of the \(n!\) inputs) must
+still incur \(\Omega(n\log n)\) comparisons. Therefore, the overall average 
+remains \(\Omega(n\log n)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.1-4)}:\\
+We show that any comparison sort must take 
+\(\Omega(n\log n)\) comparisons even for inputs that satisfy the following 
+promise: For every index \(i\) with \(i \bmod 4 = 0\), the element that is 
+initially at position \(i\) will, after sorting, appear in one of the positions 
+\(i-1\), \(i\), or \(i+1\). For the remaining positions (those with \(i \bmod 4 
+\neq 0\)), no constraint is given.
+
+Consider the set \(S\) of all input orders consistent with this promise. Note 
+that the elements in positions \(i\) with \(i \bmod 4 \neq 0\) may appear in 
+any order. Thus, there are at least \((3n/4)!\) possible orderings for these 
+elements. By Stirling's approximation, we have
+\[
+\log_2\bigl((3n/4)!\bigr)=\Omega(n\log n).
+\]
+
+Since any comparison sort must distinguish among all these distinct inputs, 
+its decision tree must have at least \(\Omega(2^{\,n\log n})\) leaves. This 
+implies that in the worst case the sort must perform at least 
+\(\Omega(n\log n)\) comparisons.
+
+\newpage
+\refstepcounter{exercise}
+\textbf{Exercise 8.2-1)}:
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.25]{Problem8_2_1.jpeg}
+\end{figure}
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.2-2)}:\\
+It's stable because u start order them on B from the final, so the last values added on the
+vector A, is suposed to be on the last position. If vector A has two equals values, the first
+one that appear starting from the final of the array, is placed at the position \textit{k},
+while the next element with the same value, will be placed at \(k - 1\), making that algorithm
+stable.
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.2-3)}:\\
+In this case the first value inserted on the array will be on a position \textit{k} on the
+output array. The second time that appear an element with the same value, will be situated
+on \(k - 1\) changing the order when the elements were inserted. In that case the 
+\textbf{stable} property is not guarantee.
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.2-4)}:\\
+\textbf{Initialization:} \\
+Before the loop starts, the array $C$ has been computed such that $C[i]$ stores 
+the position where the last element of value $i$ should be placed in $B$. 
+Since no elements have been copied yet, the invariant holds.
+
+\textbf{Maintenance:} \\
+At the start of each iteration, the last unplaced element in $A$ of value $i$ 
+is correctly positioned in $B[C[i]]$. After placing it, $C[i]$ is decremented, 
+ensuring the next occurrence of $i$ is placed correctly in the next iteration. 
+Thus, the invariant holds throughout the loop.
+
+\textbf{Termination:} \\
+When the loop ends, all elements from $A$ have been placed in $B$ in a stable order. 
+Since every element was placed in its correct position using $C$, and $C[i]$ was 
+decremented correctly, $B$ is now a sorted version of $A$. 
+
+Thus, the loop invariant holds, proving the correctness of COUNTING-SORT.
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.2-5)}:\\
+\begin{algorithm}
+    \caption{Counting Sort In-Place}
+    \begin{algorithmic}[1]
+    \Require Array $A$ of size $n$, maximum value $k$
+    \Ensure Sorted array $A$
+    \State Initialize array $C$ of size $k$ with zeros
+    \For{$j = 0$ to $n - 1$}
+        \State $C[A[j]] \gets C[A[j]] + 1$
+    \EndFor
+    \State $index \gets 0$
+    \For{$i = 0$ to $k - 1$}
+        \While{$C[i] > 0$}
+            \State $A[index] \gets i$
+            \State $index \gets index + 1$
+            \State $C[i] \gets C[i] - 1$
+        \EndWhile
+    \EndFor
+    \end{algorithmic}
+\end{algorithm}
+
+\refstepcounter{exercise}
+\textbf{Exercise 8.2-6)}:\\
+It's just consist of making the first 2 for loops of counting sort. Then when it gives 
+\(a\) and \(b\), just substract and return \(C[b] - C[a - 1]\) to give the answer to that 
+question.
+
+\newpage
+\refstepcounter{exercise}
+\textbf{Exercise 8.2-7)}:\\
+\begin{algorithm}
+    \caption{Counting Sort for Numbers with Fractional Parts}
+    \begin{algorithmic}[1]
+        \Require Array $A$ of $n$ numbers in range $[0, k]$ with at most $d$ decimal digits
+        \Ensure Sorted array $A$ in $O(n + 10^d k)$ time
+        \State Multiply each $A[i]$ by $10^d$ to convert to an integer
+        \State Find max value $k' \gets 10^d k$
+        \State Initialize count array $C$ of size $k' + 1$ with zeros
+        \For{$j \gets 0$ to $n - 1$}
+        \State $C[A[j]] \gets C[A[j]] + 1$
+        \EndFor
+        \For{$i \gets 1$ to $k'$}
+        \State $C[i] \gets C[i] + C[i-1]$
+        \EndFor
+        \For{$j \gets n - 1$ to $0$}
+        \State Place $A[j]$ in sorted position using $C$
+        \State $C[A[j]] \gets C[A[j]] - 1$
+        \EndFor
+        \State Divide each $A[i]$ by $10^d$ to restore original scale
+    \end{algorithmic}
+\end{algorithm}
 
 \end{document}

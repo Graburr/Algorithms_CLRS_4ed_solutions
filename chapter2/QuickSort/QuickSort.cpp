@@ -1,6 +1,6 @@
 #include "QuickSort.h"
 
-template <typename T> void QuickSort(std::vector<T> A, size_t p, size_t r) {
+template <typename T> void QuickSort(std::vector<T> &A, size_t p, size_t r) {
   if (p < r) {
     size_t q = Partition(A, p, r);
     QuickSort(A, p, q - 1);
@@ -8,7 +8,7 @@ template <typename T> void QuickSort(std::vector<T> A, size_t p, size_t r) {
   }
 }
 
-template <typename T> size_t Partition(std::vector<T> A, size_t p, size_t r) {
+template <typename T> size_t Partition(std::vector<T> &A, size_t p, size_t r) {
   T = A[r];
   size_t i = p;
 
