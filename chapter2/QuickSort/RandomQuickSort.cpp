@@ -15,8 +15,5 @@ template <typename T> size_t RandomPartition(std::vector<T> &A, size_t p, size_t
   return Partition(A, p, r);
 }
 
-int main() {
-  srand(time(NULL));
-
-  return 0;
-}
+// Use this especialization on RandomizedSelect.cpp
+template size_t RandomPartition<int>(std::vector<int> &A, size_t p, size_t r);
