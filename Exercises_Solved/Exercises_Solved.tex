@@ -1585,23 +1585,188 @@ saw this data structures a lot throughout computer science leasons and other boo
 
 \refstepcounter{exercise}
 \textbf{Exercise 10.3-2)}:\\
-Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Problem10_3_2.cpp}
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Elementary_DS/Problem10_3_2.cpp}
 {\textcolor{Blue}{Problem10\_3\_2.cpp}}.
 
 \refstepcounter{exercise}
 \textbf{Exercise 10.3-3)}:\\
-Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Problem10_3_3.cpp}
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Elementary_DS/Problem10_3_3.cpp}
 {\textcolor{Blue}{Problem10\_3\_3.cpp}}.
 
 \refstepcounter{exercise}
 \textbf{Exercise 10.3-4)}:\\
-Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Problem10_3_4.cpp}
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Elementary_DS/Problem10_3_4.cpp}
 {\textcolor{Blue}{Problem10\_3\_4.cpp}}.
 
 \refstepcounter{exercise}
 \textbf{Exercise 10.3-5)}:\\
-Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Problem10_3_5.cpp}
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Elementary_DS/Problem10_3_5.cpp}
 {\textcolor{Blue}{Problem10\_3\_5.cpp}}.
+
+\subsection{Hash Tables}
+\setcounter{exercise}{0}
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.1-1)}:\\
+It could iterate from position m to position 1 until it reach 1 value, that would be the
+maximum element of S. At worst situation this procedure takes \(\Theta(m)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.1-2)}:\\
+As said before, the keys of that set would be the index of the bits. With the value 0 on
+a specific index \textit{k}, we say that there isn't any element with that key value. On the
+other hand if the value is 1, we say that exists this value with key \textit{k} (it's the 
+index).
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.1-3)}:\\
+We could use a double linked list that contains the key and satelite data. The key then
+we can store them on a direct-address table to access it instantly. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.1-4)}:\\
+Implement direct-address dictionary on huge array.
+Because all values have a key among satelite data, we could use a stack in which each element
+will have a pointer back to the satelite data.
+
+\textbf{Insert}: To insert \textit{x} push an element \textit{y} to the stack which contains
+a pointer to position \textit{x} in the huge array. Update \textit{A[x]} in the huge array 
+\textit{A} to containts a pointer to \textit{y} in \textit{S}.
+
+\textbf{Search}: go to position \textit{x} of \textit{A}. If that location is an element of
+\textit{S} which containts a pointer to \textit{A[x]}, then we know \textit{x} is in \textit{A}.
+
+\textbf{Delete}; We need to invalidate the element on \textit{S} which is pointed by 
+\textit{A[x]}. On \textit{S}, we need to pop an item, move it to the "hole" and update the 
+pointer in \textit{A} accordingly.
+
+All of these operations takes \(O(1)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.2-1)}:\\
+because it says is \textit{independent}, the probability of 2 keys to collide is \(\frac{1}{m}\)
+and sayint that is \textit{uniform}, each key will be hashed on some of the \textit{m} slots.
+\(P(h(k_i = h(k_j))) = \frac{1}{m} \quad i \neq j\). The total number of pairs are:
+\(\left(^n_2\right) = \frac{n(n - 1)}{2}\). We will define a random variable \(X_{ij}\) which
+is equal to 1 if \(h(k_i) = h(k_j)\). \(E[X_{ij}] = \frac{1}{m}\).
+Then the conclusion is:
+\[
+\sum_{1 \leq i < j \leq n} E[X_{ij}] = \left(^n_2\right) \cdot \frac{1}{m} = \frac{n(n - 1)}
+{2m}
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.2-3)}:\\
+On sucessful or unsucessful searches on the worst time it would be the same as \(O(1 + \alpha)\).
+Then on insertions instead of be \(O(1)\) at the worst case it would be \(O(1 + \alpha)\) 
+because the element is hashed in a chained slot, and that chained slot have a length of 
+\(\alpha\). On deletions it wouldn't affect because you just delete the item changing the 
+next and previous pointer. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.2-4)}:\\
+The list must be a doubly linked list. Each slot will be 1 if the elements contians a value,
+0 otherwise. All the operations using a doubly linked list is \(O(1)\) so we are maintining
+this condition of the statement.
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.2-5)}:\\
+Supose that \(m - 1\) slots contains \(n - 1\) elements. Then the remaining slots should
+have \(|U| - (m - 1)(n - 1) > nm - (m - 1)(n - 1) = n + m - 1 \geq n\) elements. Due to that
+a search will expend \(\Theta(n)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.3-1)}:\\
+We can check the hashvale with each node in the linked list, and discard the node if the 
+hash value isn't the same.
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.3-2)}:\\
+Applying for each caracter the module of \textit{m} and then multyplying the result by
+128. Apply this operations for each character and you will get the result.
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.3-3)}:\\
+\(m = 2^p - 1\). For any chain \(k = c_1c_2...c_n\) on base \(2^p\), his numeric value is:
+\[
+k = \sum_{i = 0}^{n - 1} c_{i + 1} \cdot (2^p)^i
+\]
+Because \(2^p \equiv 1 \mod m\), then:
+\[
+k \mod m \equiv \sum_{i = 0}^{n - 1} c_{i + 1} * 1^i \quad \mod m = \sum_{i = 1}^{n} c_1
+\mod m
+\]
+The result doesn't depend on the order of \(c_i\) so any permutations will have the same
+value.
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.3-4)}:
+\[
+h(61) = 700 \quad h(62) = 318 \quad h(63) = 936 \quad h(64) = 554 \quad h(65) = 172
+\]
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.4-1)}:\\
+Linear probing using \(h(k, i) = (k + i)\):
+\begin{align*}
+    h(10, 0) &= 10\\
+    h(22, 0) &= 22\\
+    h(31, 0) &= 31\\
+    h(4, 0) &= 4\\
+    h(15, 0) &= 15\\
+    h(28, 0) &= 28\\
+    h(17, 0) &= 17\\
+    h(88, 0) &= 88\\
+    h(59, 0) &= 59
+\end{align*}
+
+Double hashing \(h(k, i) = (k + 1 + (k \mod (m - 1))) \mod m\):
+\begin{align*}
+    h(10, 0) &= 10\\
+    h(22, 0) &= 0\\
+    h(31, 0) &= 9\\
+    h(4, 0) &= 4\\
+    h(15, 0) &= 4 (occupied) \quad h(15, 1) = 10 (occupied) \quad h(15, 2) = 5\\
+    h(28, 0) &= 6\\
+    h(17, 0) &= 6 (occupied) \quad h(17, 1) = 3\\
+    h(88, 0) &= 0 (occupied) \quad h(88, 1) = 9 (occupied) \quad h(88, 2) = 7\\
+    h(59, 0) &= 4 (occupied) \quad h(59, 1) = 3 (occupied) \quad h(59, 2) = 2
+\end{align*}
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.4-2)}:\\
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Hash_Tables/Problem11_4_2.cpp}
+{\textcolor{Blue}{Problem11\_4\_2.cpp}}
+
+\refstepcounter{exercise}
+\textbf{Exercise 11.4-2)}:
+\begin{enumerate}
+    \item \(\alpha = \frac{3}{4}\):
+    \begin{enumerate}
+        \item Unsucessful: \(\frac{1}{1 - \frac{3}{4}} = 4\) probes.
+        \item Sucessful \(\frac{1}{\frac{3}{4}} \ln \frac{1}{1 - \frac{3}{4}} \approx 1.848\)
+        probes.
+    \end{enumerate}
+
+    \item \(\alpha = \frac{7}{8}\):
+    \begin{enumerate}
+        \item Unsucessful: \(\frac{1}{1 - \frac{7}{8}} = 8\) probes.
+        \item Sucessful \(\frac{1}{\frac{7}{8}} \ln \frac{1}{1 - \frac{7}{8}} \approx 2.377\)
+        probes.
+    \end{enumerate}
+    
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
