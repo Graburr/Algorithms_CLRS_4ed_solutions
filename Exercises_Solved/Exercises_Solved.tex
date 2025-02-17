@@ -1754,15 +1754,49 @@ Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/
         \item Sucessful \(\frac{1}{\frac{7}{8}} \ln \frac{1}{1 - \frac{7}{8}} \approx 2.377\)
         probes.
     \end{enumerate}
-    
 \end{enumerate}
 
 
+\subsection{Bynary Search Trees}
+\setcounter{exercise}{0}
 
 
+\refstepcounter{exercise}
+\textbf{Exercise 12.1-1)}:
+\begin{figure*}[h]
+    \includegraphics[scale=0.3]{Problem12_1_1.jpeg}
+    \centering
+\end{figure*}
+\clearpage
 
+\refstepcounter{exercise}
+\textbf{Exercise 12.1-2)}:\\
+The \textit{min-heap} says that both child keys have to be greater than the parent keys.
+Whereas, \textit{binary-search-tree}, says that the left child key must be less than the
+parent key, and the right one must be greater than the parent key.
 
+It can't be printed on \(O(n)\) because you only know that the leafs will have the greatest
+key nodes, but you don't know if the left one is greater than the right one, or viceversa.
+Due to that it's not preccise print in \(O(n)\). You would need an auxiliar data structure
+to check if the new node it's bigger than the sibling and store it on that data structure 
+to then print all of the nodes that are into that data structure.
 
+\refstepcounter{exercise}
+\textbf{Exercise 12.1-3)}:\\
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Binary_Search_Trees/BST.cpp}
+{\textcolor{Blue}{BST.cpp}} on the function \textit{InorderTreeWalkIt}.
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.1-4)}:\\
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Binary_Search_Trees/BST.cpp}
+{\textcolor{Blue}{BST.cpp}}
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.1-5)}:\\
+This happends because you need to compare key values of each node to place the new node into
+the correct position, and that's \(\log_2 n\).
+Then because you have \(n\) elements to insert on a tree, you need to iterate over the
+\(n\) elements that will be inserted on the tree.
 
 
 
