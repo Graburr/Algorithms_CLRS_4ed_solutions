@@ -46,6 +46,91 @@ void PreorderTreeWalk(NodeBST *node) {
   }
 }
 
+NodeBST *TreeSearch(NodeBST *node, int k) {
+  if (!node || k == node->key) {
+    return node;
+  }
+
+  if (k < node->key) {
+    return TreeSearch(node->l.get(), k);
+  } else {
+    return TreeSearch(node->r.get(), k);
+  }
+}
+
+// On most computers this algorithm is faster than recursive one.
+NodeBST *TreeSearchIt(NodeBST *node, int k) {
+  while (!node && node->key != k) {
+    if (k < node->key) {
+      node = node->l.get();
+    } else {
+      node = node->r.get();
+    }
+  }
+
+  return node;
+}
+
+NodeBST *TreeMinimum(NodeBST *node) {
+  while (!node) {
+    node = node->l.get();
+  }
+
+  return node;
+}
+
+NodeBST *TreeMaximum(NodeBST *node) {
+  while (!node) {
+    node = node->r.get();
+  }
+
+  return node;
+}
+
+NodeBST *TreeSucesor(NodeBST *root, NodeBST *node) {
+  if (node->r) {
+    return TreeMinimum(node->r.get());
+  } else { // Implemented without using the parent attribute as the book says.
+    NodeBST *sucessor = nullptr;
+    NodeBST *current = root;
+
+    while (current != nullptr) {
+      if (node->key < current->key) {
+        sucessor = current;
+        current = current->l.get();
+      } else if (node->key > current->key) {
+        current = current->r.get();
+      } else {
+        break;
+      }
+    }
+
+    return sucessor;
+  }
+}
+
+NodeBST *TreePredecesor(NodeBST *root, NodeBST *node) {
+  if (node->l) {
+    return TreeMaximum(node->l.get());
+  } else {
+    NodeBST *predecesor = nullptr;
+    NodeBST *current = root;
+
+    while (current != nullptr) {
+      if (node->key > current->key) {
+        predecesor = current;
+        current = current->r.get();
+      } else if (node->key < current->key) {
+        current = current->l.get();
+      } else {
+        break;
+      }
+    }
+
+    return predecesor;
+  }
+}
+
 int main() {
   NodeBST root(10);
 
@@ -66,6 +151,9 @@ int main() {
   std::cout << "\nPreorder:\n";
   PreorderTreeWalk(&root);
   std::cout << std::endl;
+
+  std::cout << TreeSucesor(&root, root.l->r.get())->key << ", "
+            << TreePredecesor(&root, root.l->r.get())->key << std::endl;
 
   return 0;
 }

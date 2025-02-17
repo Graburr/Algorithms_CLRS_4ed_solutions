@@ -1798,6 +1798,54 @@ the correct position, and that's \(\log_2 n\).
 Then because you have \(n\) elements to insert on a tree, you need to iterate over the
 \(n\) elements that will be inserted on the tree.
 
+\refstepcounter{exercise}
+\textbf{Exercise 12.2-1)}:\\
+option c could not be the sequence of nodes explored because we take the
+left child from the 911 node, and yet somehow manage to get to the 912 node
+which cannot belong the left subtree of 911 because it is greater. Option e is
+also impossible because we take the right subtree on the 347 node and yet later
+come across the 299 node
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.2-3)}:\\
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Binary_Search_Trees/BST.cpp}
+{\textcolor{Blue}{BST.cpp}}
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.2-4)}:\\
+Supose that if there is no element on any set, the value of the key is -1. if we supose the
+tree 5 and on the left leaf the 4, then we want to search the key number 4. then we have: 
+\textit{A = {4}, B = {5, 4}, C = {-1}} we would have \(a = 4, b = 4, c = -1\) that's not 
+satisfies the condition of the professor.
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.2-5)}:\\
+If node x has two childrens, It's sucessor is the minimum element of the BST rooted at x.right.
+All the values on the left are less than the node x. Due to that it can't be a child a left
+one node. It's the same with the predecesor.
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.2-6)}:\\
+Let x be a node in a binary search tree  with an empty right subtree. If has a successor
+y, then y is the lowest ancestor of x whose left child is also an ancestor of x.
+
+\textbf{Proof:}
+\begin{enumerate}
+\item Since the right subtree of x is empty, the successor y cannot be in the right subtree.
+\item By definition, y is the smallest node greater than x. This implies that y is an 
+ancestor of x.
+\item Furthermore, 
+y must be the lowest ancestor such that x is in the left subtree of y. Otherwise, there 
+would exist a lower ancestor than y with the same property, contradicting the minimality of
+y.
+\end{enumerate}
+Therefore, y is the lowest ancestor of x whose left child is also an ancestor of x.
+
+
+
+
+
+
 
 
 
