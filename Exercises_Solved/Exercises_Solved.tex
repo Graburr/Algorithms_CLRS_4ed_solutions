@@ -52,7 +52,7 @@ it gets involved algorithms as searching the hotels close to that airport and it
 searched in a short time period.
 
 \refstepcounter{exercise}
-\textbf{Exercise 1.2-2)}:\\
+\textbf{Exercise 1.2-2)}:
 \begin{flalign*}
     8n^2 < 64n \cdot \log_2 n \quad \rightarrow \quad n < 8 \cdot \log_2 n
 \end{flalign*}
@@ -60,14 +60,14 @@ Try values until this inequality is false. To $n \lessapprox 43$, insertion sort
 faster than merge sort.
 
 \refstepcounter{exercise}
-\textbf{Exercise 1.2-3)}:\\
+\textbf{Exercise 1.2-3)}:
 \begin{flalign*}
     100n^2 < 2^n \quad 
 \end{flalign*}
 Trying values, for $n \lessapprox 15$, $2^n$ runs faster than $100n^2$.
 
 \refstepcounter{exercise}
-\textbf{Exercise 1.2-4)}:\\
+\textbf{Exercise 1.2-4)}:
 \\
 \textit{\large View photo of the exercise on the next page.}
 \newpage
@@ -354,7 +354,7 @@ n items to the right + n / 2 that cost to search all the. So it's  \(n \cdot \fr
     \end{algorithmic}
 \end{algorithm}
 
-\underline{\large{Problems of page 45}}\\
+\underline{\large{Problems of page 45}}
 \\
 \refstepcounter{exercise}
 \textbf{Exercise 2-1)}:\\
@@ -790,7 +790,7 @@ C =
 \]
 
 \refstepcounter{exercise}
-\textbf{Exercise 4.2-2)}:\\
+\textbf{Exercise 4.2-2)}:
 You can find the pseudocode on that website (it's not mine, it's from another one):
 \href{https://atekihcan.github.io/CLRS/04/E04.02-02/}{https://atekihcan.github.io/CLRS/04/E04.02-02/}.
 
@@ -1841,6 +1841,35 @@ y.
 \end{enumerate}
 Therefore, y is the lowest ancestor of x whose left child is also an ancestor of x.
 
+\refstepcounter{exercise}
+\textbf{Exercise 12.2-7)}:\\
+\textit{Tree-Minimum} spends \(\Theta(\log_2 n)\). The function \textit{Tree-Sucessor}, will
+spend \(\Theta(n)\) because with all the calls that is made to that function, will print all
+values of the nodes on the \(n - 1\) call. Due to that, the total amount of time spend of
+this algorithm to do an inorder walk, is \(\Theta(n)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.2-8)}:\\
+With the code that I have (mentioned before on some exercise). The while loop start from the
+root, and then the maximum amount of time this while loop is executed is \textit{h}, that's 
+the height of the key that you are finding it's successor. Because you call this function
+successively, the height will be decremented, due to that it matters the number of time
+you call this function. Hence it takes \(O(k + h)\).
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.3-1)}:\\
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Binary_Search_Trees/BST.cpp}
+{\textcolor{Blue}{BST.cpp}} it the function \textit{TreeInsertRec}.
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.3-2)}:\\
+When you insert the new node, to insert it, you needed yo check \textit{n} nodes. After that
+if you search for that node, you need to check the \textit{n} nodes that was necesary to insert
+the node that you are searching, plus the check of the node that you are searching for see
+if that's the solution. For that you need to examine as the statement says \(n + 1\) nodes.
+
+\refstepcounter{exercise}
+\textbf{Exercise 12.3-3)}:\\
 
 
 

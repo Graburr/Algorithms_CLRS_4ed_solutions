@@ -25,4 +25,9 @@ NodeBST *TreeMaximum(NodeBST *node);
 NodeBST *TreeSucesor(NodeBST *root, NodeBST *node);
 NodeBST *TreePredecesor(NodeBST *root, NodeBST *node);
 
+void TreeInsert(std::unique_ptr<NodeBST> &root, std::unique_ptr<NodeBST> &z);
+void TreeInsertRec(std::unique_ptr<NodeBST> &root, std::unique_ptr<NodeBST> &z);
+void Transplant(std::unique_ptr<NodeBST> &root, NodeBST *u, std::unique_ptr<NodeBST> &v);
+void TreeDelete(std::unique_ptr<NodeBST> &root, std::unique_ptr<NodeBST> &z);
+
 #endif

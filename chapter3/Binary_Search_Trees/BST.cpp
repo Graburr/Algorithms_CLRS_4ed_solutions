@@ -131,6 +131,93 @@ NodeBST *TreePredecesor(NodeBST *root, NodeBST *node) {
   }
 }
 
+void TreeInsert(std::unique_ptr<NodeBST> &root, std::unique_ptr<NodeBST> &z) {
+  if (!root) {
+    root = std::move(z);
+    return;
+  }
+
+  NodeBST *x = root.get();
+  NodeBST *y = nullptr;
+
+  while (x) {
+    y = x;
+
+    if (z->key < x->key) {
+      x = x->l.get();
+    } else {
+      x = x->r.get();
+    }
+  }
+
+  if (z->key < y->key) {
+    y->l = std::move(z);
+  } else {
+    y->r = std::move(z);
+  }
+}
+
+void Transplant(std::unique_ptr<NodeBST> &root, NodeBST *u, std::unique_ptr<NodeBST> &v) {
+  if (root.get() == u) {
+    root = std::move(v);
+    return;
+  }
+
+  NodeBST *parent = nullptr;
+  NodeBST *current = root.get();
+
+  // search the parten of 'u' node
+  while (current && current != u) {
+    parent = current;
+
+    if (u->key < current->key) {
+      current = current->l.get();
+    } else {
+      current = current->r.get();
+    }
+  }
+
+  if (!current)
+    return;
+
+  if (parent->l.get() == u) {
+    parent->l = std::move(v);
+  } else {
+    parent->r = std::move(v);
+  }
+}
+
+void TreeDelete(std::unique_ptr<NodeBST> &root, std::unique_ptr<NodeBST> &z) {
+  if (!z->l) {
+    Transplant(root, z.get(), z->r);
+  } else if (!z->r) {
+    Transplant(root, z.get(), z->l);
+  } else {
+    NodeBST *y = TreeMinimum(z->r.get());
+
+    if (y != z->r.get()) {
+      Transplant(root, y, y->r);
+      y->r = std::move(z->r);
+    }
+
+    Transplant(root, z.get(), z->r);
+    y->l = std::move(z->l);
+  }
+}
+
+void TreeInsertRec(std::unique_ptr<NodeBST> &root, std::unique_ptr<NodeBST> &z) {
+  if (!root) {
+    root = std::move(z);
+    return;
+  }
+
+  if (z->key < root->key) {
+    TreeInsertRec(root->l, z);
+  } else {
+    TreeInsertRec(root->r, z);
+  }
+}
+
 int main() {
   NodeBST root(10);
 
