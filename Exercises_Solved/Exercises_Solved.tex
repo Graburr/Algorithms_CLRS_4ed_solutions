@@ -1868,11 +1868,74 @@ if you search for that node, you need to check the \textit{n} nodes that was nec
 the node that you are searching, plus the check of the node that you are searching for see
 if that's the solution. For that you need to examine as the statement says \(n + 1\) nodes.
 
+\subsection{Red-Black Trees}
 \refstepcounter{exercise}
-\textbf{Exercise 12.3-3)}:\\
+\textbf{Exercise 13.1-1)}:
+\begin{figure*}[h]
+    \includegraphics[scale=0.3]{Problem13_1_1.jpeg}
+    \centering
+\end{figure*}
+\newpage
 
+\refstepcounter{exercise}
+\textbf{Exercise 13.1-2)}:
+\begin{figure*}[h]
+    \includegraphics[scale=0.3]{Problem13_1_2.jpeg}
+    \centering
+\end{figure*}
 
+\refstepcounter{exercise}
+\textbf{Exercise 13.1-3)}:\\
+Yes the resulting tree will be a red-black tree, that's the root is red, then by the fourth
+property both childs of the root must be black. if you change the color to black, the childs
+nodes will keep with the black color, and the black-height would be increased by 1 but doesn't
+violate any other of the properties.  
 
+\refstepcounter{exercise}
+\textbf{Exercise 13.1-4)}:\\
+The degree of a node it's the number of childs that a black node have. By this definition,
+the nuumber of possible degrees of black node it's the same as the black-height. The depth
+of the leaves, will be the black-hegith from the root of the tree. 
+
+\refstepcounter{exercise}
+\textbf{Exercise 13.1-5)}:\\
+Property 5 tells us that the simple path of a node must contain the same number of black nodes.
+and the longest possible one, we know that it must be alternating red nodes with black nodes.
+Due to that, the longest possible path it's two times the shortest possible path.
+
+\refstepcounter{exercise}
+\textbf{Exercise 13.1-6)}:\\
+The largest possible number is \(2^{2k} - 1\) because each black node is alternating with
+a red node. The smallest possible number is \(2^k - 1\) that correspond to the number of black nodes.
+
+\refstepcounter{exercise}
+\textbf{Exercise 13.1-7)}:\\
+The max possible ratio is \(2:1\), for each black node, there is a previos red node and 
+subsequent red node.
+
+\refstepcounter{exercise}
+\textbf{Exercise 13.2-1)}:\\
+Resolved on \href{https://github.com/Graburr/Algorithms_CLRS_4ed_solutions/tree/main/chapter3/Red_Black_Trees/RBT.cpp}
+{\textcolor{Blue}{RBT.cpp}} on function \textit{RightRoate}.
+
+\refstepcounter{exercise}
+\textbf{Exercise 13.2-2)}:\\
+This is because you rotate all nodes that are ancestors of you, that's mean that you can rotate
+all nodes that are above of you and if some ot that nodes is rotated, the node \textit{n},
+will be rotated.
+
+\refstepcounter{exercise}
+\textbf{Exercise 13.2-3)}:\\
+The deepth of all nodes in \(\alpha\) is incremented by 1 because it's pushed down. The 
+depth of all nodes in \(\beta\) remains equal, only their position are changed. And the 
+depth of the nodes in \(\gamma\) are decremented by 1 because they are moved 1 position up.
+
+\refstepcounter{exercise}
+\textbf{Exercise 13.2-4)}:\\
+Each node of the tree that is a left child, can be brought into the chain applying right
+rotations. Every tyme you apply a right rotations, new left childs will pop up. Due to that,
+we need to apply again the right rotation. Therefore, we need to apply that function \(n - 1\)
+times, then the rotations needed are \(O(n)\).
 
 
 
