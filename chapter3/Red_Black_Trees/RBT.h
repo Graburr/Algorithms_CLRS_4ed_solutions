@@ -50,4 +50,7 @@ struct RBTree {
 void LeftRotate(RBTree *tree, std::shared_ptr<RBTNode> &node);
 void RightRotate(RBTree *tree, std::shared_ptr<RBTNode> &node);
 
+void Insert(RBTree *tree, std::shared_ptr<RBTNode> &node);
+void InsertFixup(RBTree *tree, std::shared_ptr<RBTNode> &node);
+
 #endif
